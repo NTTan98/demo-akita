@@ -1,0 +1,33 @@
+<h1>Counter</h1>
+
+<div class="counter">
+  <div class="count">{{ count$ | async }}</div>
+  <div class="counter-actions">
+    <button (click)="increment()">Increment</button>
+    <button (click)="decrement()">Decrement</button>
+  </div>
+</div>
+
+<div class="progress" [hidden]="(isLoading$ | async) == false">
+  Initializing...
+</div>
+
+<div class="form">
+  <input
+    type="text"
+    [(ngModel)]="newTask"
+    class="input"
+    placeholder="Add todo"
+    (keyup.enter)="addToList()"
+  />
+  <button (click)="addToList()" class="btn">Add Task</button>
+</div>
+<div class="list-todo">
+  <div *ngFor="let x of items; let index = index" class="items">
+    <div class="item">{{ x }}</div>
+    <div class="btn-group">
+      <button class="btn-del">Remove</button>
+      <button class="btn-edit">Edit</button>
+    </div>
+  </div>
+</div>
